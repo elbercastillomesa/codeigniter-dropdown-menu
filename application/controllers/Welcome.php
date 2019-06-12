@@ -13,9 +13,22 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		$data['dropdown'] = $this->menu_model->dropdown_menu();
-		$data['dropdown_items'] = $this->menu_model->dropdown_menu_item();
 		$data['title'] = 'Dropdown Bootstrap Template';
+
+
+		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+					
+			$data['dropdown'] = $this->menu_model->dropdown_menu('1');
+			$data['dropdown_items'] = $this->menu_model->dropdown_menu_item('1');
+					
+		} else {
+			
+			$data['dropdown'] = $this->menu_model->dropdown_menu('0');
+			$data['dropdown_items'] = $this->menu_model->dropdown_menu_item('0');
+		}
+
+var_dump($data['dropdown']);
+
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/navbar', $data);		
 		$this->load->view('landing/home');
