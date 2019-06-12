@@ -17,7 +17,7 @@ class Dropdown_model extends CI_Model {
 		$this->db->group_by('menu_id');
 		$this->db->order_by('m_name', 'ASC');
 		$query = $this->db->get();
-		echo PHP_EOL.$this->db->last_query().PHP_EOL;
+		//echo PHP_EOL.$this->db->last_query().PHP_EOL;
 		return $query->result();
 	}
 
@@ -25,10 +25,8 @@ class Dropdown_model extends CI_Model {
 
 		$this->db->select('*');
 		$this->db->from('menu_item');
-		$this->db->where('menu_item.m_item_session <= '.$id);	
 		$this->db->order_by('m_item_name');
 		$query = $this->db->get();
-		echo PHP_EOL.$this->db->last_query().PHP_EOL;
 		return $query->result();
 	}
 

@@ -18,26 +18,22 @@ class User extends CI_Controller {
 		
 		parent::__construct();
 		$this->load->model('user_model');
+		$this->load->helper('navbar_helper');	
 		
 	}
 	
 	
 	public function index() {
 
-		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-			
-			$this->load->view('header');
-			$this->load->view('user/login/login');
-			$this->load->view('footer');
-			
-		} else {
-			
-			// there user was not logged in, we cannot logged him out,
-			// redirect him to site root
-			redirect('/');
-			
-		}
-		
+		$data = showLinks($_SESSION, 'USER CI');
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/navbar', $data);		
+		$this->load->view('landing/home');
+		$this->load->view('templates/footer');
+		$this->load->view('header');
+		$this->load->view('user/login/login');
+		$this->load->view('footer');				
 	}
 	
 	/**
