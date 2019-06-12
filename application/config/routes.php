@@ -55,6 +55,7 @@ $route['login'] = 'user/login';
 $route['logout'] = 'user/logout';
 
 $route['reports'] = 'reports/index';
+$route['test'] = 'welcome/test';
 
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';

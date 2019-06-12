@@ -6,6 +6,8 @@ class Welcome extends CI_Controller {
 	public function __construct(){
 
 		parent::__construct();
+		$this->load->library(array('session'));
+		$this->load->helper(array('url'));
 		$this->load->model('Dropdown_model', 'menu_model', TRUE);
 	}
 
@@ -16,6 +18,16 @@ class Welcome extends CI_Controller {
 		$data['title'] = 'Dropdown Bootstrap Template';
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/navbar', $data);		
+		$this->load->view('landing/home');
+		$this->load->view('templates/footer');
+	}
+
+	public function test()
+	{
+
+		$data['title'] = 'Dropdown Bootstrap Template';
+		$this->load->view('templates/header', $data);
+		//$this->load->view('templates/navbar', $data);		
 		$this->load->view('landing/home');
 		$this->load->view('templates/footer');
 	}

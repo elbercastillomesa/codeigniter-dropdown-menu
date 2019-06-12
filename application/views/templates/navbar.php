@@ -20,7 +20,7 @@
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <?php foreach ($dropdown_items as $item): ?>
                       <?php if($menu->menu_id == $item->m_id): ?>
-                        <a class="dropdown-item" href="#"><?php echo $item->m_item_name; ?></a>
+                        <a class="dropdown-item" href="<?= base_url($item->m_item_url) ?>"><?php echo $item->m_item_name; ?></a>
                       <?php endif; ?>
                     <?php endforeach; ?>
                   </div>
