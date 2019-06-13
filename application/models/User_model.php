@@ -52,14 +52,19 @@ class User_model extends CI_Model {
 	 * @return bool true on success, false on failure
 	 */
 	public function resolve_user_login($username, $password) {
-		
-		$this->db->select('password');
-		$this->db->from('users');
-		$this->db->where('username', $username);
-		$hash = $this->db->get()->row('password');
-		
-		return $this->verify_password_hash($password, $hash);
-		
+/*
+SELECT
+    `usucod`,    `rolcod`,    `usucontr`,    `usualias`,    `dpcod`,    `usufeccrea`,    `usuulting`,    `usuacfech`,    `estcod`	FROM    `usuario`
+*/		
+		$this->db->select('usucontr');
+		$this->db->from('usuario');
+		$this->db->where('usualias', $username);
+		$hash = $this->db->get()->row('usucontr');
+		//echo PHP_EOL.$this->db->last_query().PHP_EOL;
+		var_dump(md5($password)); echo PHP_EOL.PHP_EOL;
+		var_dump($hash); echo PHP_EOL.PHP_EOL;
+		var_dump($this->verify_password_hash(md5($password), $hash));
+		return $this->verify_password_hash(md5($password), $hash);
 	}
 	
 	/**
@@ -71,12 +76,10 @@ class User_model extends CI_Model {
 	 */
 	public function get_user_id_from_username($username) {
 		
-		$this->db->select('id');
-		$this->db->from('users');
-		$this->db->where('username', $username);
-
-		return $this->db->get()->row('id');
-		
+		$this->db->select('usu_id');
+		$this->db->from('usuario');
+		$this->db->where('usualias', $username);
+		return $this->db->get()->row('usu_id');		
 	}
 	
 	/**
@@ -88,10 +91,9 @@ class User_model extends CI_Model {
 	 */
 	public function get_user($user_id) {
 		
-		$this->db->from('users');
-		$this->db->where('id', $user_id);
-		return $this->db->get()->row();
-		
+		$this->db->from('usuario');
+		$this->db->where('usu_id', $user_id);
+		return $this->db->get()->row();		
 	}
 	
 	/**
@@ -118,7 +120,5 @@ class User_model extends CI_Model {
 	private function verify_password_hash($password, $hash) {
 		
 		return password_verify($password, $hash);
-		
 	}
-	
 }
