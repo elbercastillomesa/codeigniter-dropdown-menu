@@ -12,7 +12,7 @@
             <?php foreach ($dropdown as $menu): ?>
               <?php if(is_null($menu->menu_item_id)): ?>
                 <li>
-                  <a class="nav-link" href="#"><?php echo $menu->m_name; ?></a>
+                  <a class="nav-link" href="<?= base_url($menu->m_url) ?>"><?php echo $menu->m_name; ?></a>
                 </li>
               <?php else: ?>
                 <li class="nav-item dropdown">

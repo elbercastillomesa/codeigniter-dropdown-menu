@@ -10,7 +10,7 @@ class Dropdown_model extends CI_Model {
 
 	public function dropdown_menu($id){
 
-		$this->db->select('menu.m_id AS menu_id, menu.m_name, menu_item.m_id AS menu_item_id');
+		$this->db->select('menu.m_id AS menu_id, menu.m_name, menu_item.m_id AS menu_item_id, menu.m_url');
 		$this->db->from('menu');
 		$this->db->join('menu_item', 'menu.m_id = menu_item.m_id', 'left');
 		$this->db->where('menu.m_session <= '.$id);
