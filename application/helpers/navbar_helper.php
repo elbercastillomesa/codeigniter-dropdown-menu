@@ -4,12 +4,12 @@
 
 function showLinks($session_var, $title){
 
-	$data['title'] = $title;
+	$data['title'] = $title . ' - Ondas Valle' ;
 	$CI =& get_instance();   
 	$CI->load->model('Dropdown_model', 'menu_model', TRUE);
 
-	//if (true){
-	if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+	if (true){
+	//if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
 					
 		$data['dropdown'] = $CI->menu_model->dropdown_menu('1');
 		$data['dropdown_items'] = $CI->menu_model->dropdown_menu_item('1');
@@ -19,7 +19,8 @@ function showLinks($session_var, $title){
 		$data['dropdown'] = $CI->menu_model->dropdown_menu('0');
 		$data['dropdown_items'] = $CI->menu_model->dropdown_menu_item('0');
 	}
-
 	return $data;	
 }
+
+
 ?>

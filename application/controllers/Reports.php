@@ -7,13 +7,12 @@ class Reports extends CI_Controller {
 
 		parent::__construct();
 		$this->load->model('Dropdown_model', 'menu_model', TRUE);
+		$this->load->helper('navbar');
 	}
 
 	public function index()
-	{
-		$data['dropdown'] = $this->menu_model->dropdown_menu();
-		$data['dropdown_items'] = $this->menu_model->dropdown_menu_item();
-		$data['title'] = 'Dropdown Bootstrap Template';
+	{		
+		$data = showLinks($_SESSION, 'Descargar Reportes');
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/navbar', $data);		
 		$this->load->view('landing/home');
