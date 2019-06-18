@@ -15,6 +15,15 @@ class Reports extends CI_Controller {
 		$data = showLinks($_SESSION, 'Descargar Reportes');
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/navbar', $data);		
+		$this->load->view('reports/general');
+		$this->load->view('templates/footer');
+	}
+
+	public function students()
+	{		
+		$data = showLinks($_SESSION, 'Descargar Reportes');
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/navbar', $data);		
 		$this->load->view('landing/home');
 		$this->load->view('templates/footer');
 	}
