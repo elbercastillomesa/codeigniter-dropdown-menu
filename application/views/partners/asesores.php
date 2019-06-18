@@ -4,13 +4,21 @@
       <div class="col-lg-12 text-center">
         <h1 class="mt-5">Asesores</h1>
         <p class="lead">Base in Phearun Web Dev but updated to Current Bootstrap, CI and jQuery versions!</p>
-        <ul class="list-unstyled">          
-		<p class="lead">Check the tutorial on Youtube <a href="https://youtu.be/ro-F0Ch-Y3Q" target="_blank">Here!</a></p>
-		<p class="lead">GitHub example <a href="https://github.com/elbercastillomesa/codeigniter-dropdown-menu" target="_blank">Here!</a></p>
-		<li>Bootstrap 4.3.1</li>
-          <li>jQuery 3.4.1</li>
-          <li>CodeIgniter 3.1.10</li>
-        </ul>
+
+        <table id="book-table" class="table table-bordered table-striped table-hover">
+          <thead>
+            <tr>
+              <td>Book Title</td>
+              <td>Book Price</td>
+              <td>Book Author</td>
+              <td>Rating</td>
+              <td>Publisher</td>
+            </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
