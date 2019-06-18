@@ -11,13 +11,13 @@ function showLinks($session_var, $title){
 	//if (true){
 	if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
 					
-		$data['dropdown'] = $CI->menu_model->dropdown_menu('1');
-		$data['dropdown_items'] = $CI->menu_model->dropdown_menu_item('1');
+		$data['dropdown'] = $CI->menu_model->dropdown_menu(array('0','2'));
+		$data['dropdown_items'] = $CI->menu_model->dropdown_menu_item(array('0','2'));
 				
 	} else {
 		
-		$data['dropdown'] = $CI->menu_model->dropdown_menu('0');
-		$data['dropdown_items'] = $CI->menu_model->dropdown_menu_item('0');
+		$data['dropdown'] = $CI->menu_model->dropdown_menu(array('1','2'));
+		$data['dropdown_items'] = $CI->menu_model->dropdown_menu_item(array('1','2'));
 	}
 
 	return $data;	

@@ -13,7 +13,8 @@ class Dropdown_model extends CI_Model {
 		$this->db->select('menu.m_id AS menu_id, menu.m_name, menu_item.m_id AS menu_item_id, menu.m_url');
 		$this->db->from('menu');
 		$this->db->join('menu_item', 'menu.m_id = menu_item.m_id', 'left');
-		$this->db->where('menu.m_session <= '.$id);
+		//$this->db->where('menu.m_session >= '.$id);
+		$this->db->where_in('menu.m_session', $id);
 		$this->db->group_by('menu_id');
 		$this->db->order_by('m_name', 'ASC');
 		$query = $this->db->get();

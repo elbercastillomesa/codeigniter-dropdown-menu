@@ -56,15 +56,12 @@ class User_model extends CI_Model {
 SELECT
     `usucod`,    `rolcod`,    `usucontr`,    `usualias`,    `dpcod`,    `usufeccrea`,    `usuulting`,    `usuacfech`,    `estcod`	FROM    `usuario`
 */		
-		$this->db->select('usucontr');
+		$this->db->select('usu_contr');
 		$this->db->from('usuario');
-		$this->db->where('usualias', $username);
-		$hash = $this->db->get()->row('usucontr');
+		$this->db->where('usu_alias', $username);
+		$hash = $this->db->get()->row('usu_contr');
 		//echo PHP_EOL.$this->db->last_query().PHP_EOL;
-		var_dump(md5($password)); echo PHP_EOL.PHP_EOL;
-		var_dump($hash); echo PHP_EOL.PHP_EOL;
-		var_dump($this->verify_password_hash(md5($password), $hash));
-		return $this->verify_password_hash(md5($password), $hash);
+		return $this->verify_password_hash(($password), $hash);
 	}
 	
 	/**
@@ -78,7 +75,7 @@ SELECT
 		
 		$this->db->select('usu_id');
 		$this->db->from('usuario');
-		$this->db->where('usualias', $username);
+		$this->db->where('usu_alias', $username);
 		return $this->db->get()->row('usu_id');		
 	}
 	

@@ -110,9 +110,7 @@ class User extends CI_Controller {
 			// validation not ok, send validation errors to the view
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar', $data);
-			//$this->load->view('header');
 			$this->load->view('user/login/login');
-			//$this->load->view('footer');
 			$this->load->view('templates/footer');
 			
 		} else {
@@ -120,7 +118,7 @@ class User extends CI_Controller {
 			// set variables from the form
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');
-var_dump($this->user_model->resolve_user_login($username, $password));
+
 			if ($this->user_model->resolve_user_login($username, $password)) {
 				
 				$user_id = $this->user_model->get_user_id_from_username($username);
@@ -134,12 +132,15 @@ var_dump($this->user_model->resolve_user_login($username, $password));
 				//$_SESSION['is_admin']     = (bool)$user->is_admin;
 				
 				// user login ok
+				/*
 				$this->load->view('templates/header', $data);
 				$this->load->view('templates/navbar', $data);
 				//$this->load->view('header');
 				$this->load->view('user/login/login_success', $data);
 				//$this->load->view('footer');
 				$this->load->view('templates/footer');
+				*/
+				redirect('/');
 				
 			} else {
 				
@@ -152,7 +153,7 @@ var_dump($this->user_model->resolve_user_login($username, $password));
 				//$this->load->view('header');
 				$this->load->view('user/login/login', $data);
 				//$this->load->view('footer');
-				$this->load->view('templates/footer');				
+				$this->load->view('templates/footer');			
 			}
 		}
 	}
@@ -176,15 +177,18 @@ var_dump($this->user_model->resolve_user_login($username, $password));
 			}
 			
 			// user logout ok
+			/*
 			$this->load->view('header');
 			$this->load->view('user/logout/logout_success', $data);
 			$this->load->view('footer');
+			*/
+			redirect('welcome');
 			
 		} else {
 			
 			// there user was not logged in, we cannot logged him out,
 			// redirect him to site root
-			redirect('/');
+			redirect('welcome');
 			
 		}
 	}
