@@ -1,65 +1,73 @@
  <html>  
  <head>  
    <title><?php echo $title; ?></title>  
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
-      <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>  
-      <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>            
-      <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />  
-   <style>  
-           body  
-           {  
-                margin:0;  
-                padding:0;  
-                background-color:#f1f1f1;  
-           }  
-           .box  
-           {  
-                width:900px;  
-                padding:20px;  
-                background-color:#fff;  
-                border:1px solid #ccc;  
-                border-radius:5px;  
-                margin-top:10px;  
-           }  
-      </style>  
+
+<!-- DataTables CSS library -->
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/DataTables/datatables.min.css'); ?>"/>
+
+<!-- jQuery library -->
+<script src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>
+
+<!-- DataTables JS library -->
+<script type="text/javascript" src="<?php echo base_url('assets/DataTables/datatables.min.js'); ?>"></script>
+
  </head>  
  <body>  
       <div class="container box">  
-           <h3 align="center"><?php echo $title; ?></h3><br />  
-           <div class="table-responsive">  
-                <br />  
-                <table id="user_data" class="table table-bordered table-striped">  
-                     <thead>  
-                          <tr>  
-                               <th width="10%">Image</th>  
-                               <th width="35%">First Name</th>  
-                               <th width="35%">Last Name</th>  
-                               <th width="10%">Edit</th>  
-                               <th width="10%">Delete</th>  
-                          </tr>  
-                     </thead>  
-                </table>  
-           </div>  
+          
+        <table id="memListTable" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Country</th>
+            <th>Created</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th></th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Country</th>
+            <th>Created</th>
+            <th>Status</th>
+        </tr>
+    </tfoot>
+</table>
+
+
+          
       </div>  
  </body>  
- </html>  
- <script type="text/javascript" language="javascript" >  
- $(document).ready(function(){  
-      var dataTable = $('#user_data').DataTable({  
-           "processing":true,  
-           "serverSide":true,  
-           "order":[],  
-           "ajax":{  
-                url:"<?php echo base_url() . 'crud/fetch_user'; ?>",  
-                type:"POST"  
-           },  
-           "columnDefs":[  
-                {  
-                     "targets":[0, 3, 4],  
-                     "orderable":false,  
-                },  
-           ],  
-      });  
- });  
- </script>
+
+ <script>
+$(document).ready(function(){
+    $('#memListTable').DataTable({
+        // Processing indicator
+        "processing": true,
+        // DataTables server-side processing mode
+        "serverSide": true,
+        // Initial no order.
+        "order": [],
+        // Load data from an Ajax source
+        "ajax": {
+            "url": "<?php echo base_url('members/getLists/'); ?>",
+            "type": "POST"
+        },
+        //Set column definition initialisation properties
+        "columnDefs": [{ 
+            "targets": [0],
+            "orderable": false
+        }]
+    });
+});
+</script>
+
+ </html>

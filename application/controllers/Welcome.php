@@ -19,13 +19,4 @@ class Welcome extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
-	public function test()
-	{
-
-		$data['title'] = 'Dropdown Bootstrap Template';
-		$this->load->view('templates/header', $data);
-		//$this->load->view('templates/navbar', $data);		
-		$this->load->view('landing/home');
-		$this->load->view('templates/footer');
-	}
 }

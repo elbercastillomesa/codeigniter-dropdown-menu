@@ -1,44 +1,43 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Crud extends CI_Controller {
-
-	public function __construct(){
-
-		parent::__construct();
-		$this->load->model("crud_model");
-		$this->load->helper('navbar_helper');
-
-	}
-
-	function index(){
-
-		$data['title'] = 'CRUD - Ajax with Modals';
-		$this->load->view('crud', $data);
-	}
-
-	function fetch_user(){  
-
-           
-           $fetch_data = $this->crud_model->make_datatables();  
-           $data = array();  
-           foreach($fetch_data as $row)  
-           {  
-                $sub_array = array();  
-                $sub_array[] = '<img src="'.base_url().'upload/'.$row->image.'" class="img-thumbnail" width="50" height="35" />';  
-                $sub_array[] = $row->first_name;  
-                $sub_array[] = $row->last_name;  
-                $sub_array[] = '<button type="button" name="update" id="'.$row->id.'" class="btn btn-warning btn-xs">Update</button>';  
-                $sub_array[] = '<button type="button" name="delete" id="'.$row->id.'" class="btn btn-danger btn-xs">Delete</button>';  
-                $data[] = $sub_array;  
-           }  
-           $output = array(  
-                "draw"                    =>     intval($_POST["draw"]),  
-                "recordsTotal"          =>      $this->crud_model->get_all_data(),  
-                "recordsFiltered"     =>     $this->crud_model->get_filtered_data(),  
-                "data"                    =>     $data  
-           );  
-           echo json_encode($output);  
-      }  
-
+class Crud extends CI_Controller{
+    
+    function  __construct(){
+        parent::__construct();
+        
+        // Load member model
+        $this->load->model('crud_model');
+    }
+    
+    function index(){
+        // Load the member list view
+        $this->load->view('crud');
+    }
+    
+    function getLists(){
+        $data = $row = array();
+        
+        // Fetch member's records
+        $memData = $this->member->getRows($_POST);
+        
+        $i = $_POST['start'];
+        foreach($memData as $member){
+            $i++;
+            $created = date( 'jS M Y', strtotime($member->created));
+            $status = ($member->status == 1)?'Active':'Inactive';
+            $data[] = array($i, $member->first_name, $member->last_name, $member->email, $member->gender, $member->country, $created, $status);
+        }
+        
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $this->member->countAll(),
+            "recordsFiltered" => $this->member->countFiltered($_POST),
+            "data" => $data,
+        );
+        
+        // Output to JSON format
+        echo json_encode($output);
+    }
+    
 }

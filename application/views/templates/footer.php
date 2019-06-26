@@ -6,11 +6,7 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('#<?php echo "book-table" ?>').DataTable({
-				"pageLength" : 5,
-		        "ajax": {
-		            url : "<?php echo site_url("asesores/asesores_table"); ?>",
-		            type : 'GET'
-		        },
+				"pageLength" : 5		        
 		    });
 		});
 	</script>
