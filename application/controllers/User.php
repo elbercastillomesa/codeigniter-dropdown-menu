@@ -176,12 +176,7 @@ class User extends CI_Controller {
 				unset($_SESSION[$key]);
 			}
 			
-			// user logout ok
-			/*
-			$this->load->view('header');
-			$this->load->view('user/logout/logout_success', $data);
-			$this->load->view('footer');
-			*/
+			// user logout ok			
 			redirect('welcome');
 			
 		} else {

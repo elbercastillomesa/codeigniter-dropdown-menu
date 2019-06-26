@@ -23,8 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://'.$_SERVER["HTTP_HOST"].'/codeigniter-dropdown-menu';
-//$config['base_url'] = 'http://'.$_SERVER["HTTP_HOST"].'/php_learn/dinamyc_dropdown_menu';
+//$config['base_url'] = 'http://'.$_SERVER["HTTP_HOST"].'/codeigniter-dropdown-menu';
+$config['base_url'] = 'http://'.$_SERVER["HTTP_HOST"].'/php_learn/dinamyc_dropdown_menu';
 
 /*
 |--------------------------------------------------------------------------
