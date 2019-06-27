@@ -51,10 +51,7 @@ class Asesores_model extends CI_Model {
 	 * @return bool true on success, false on failure
 	 */
 	public function resolve_user_login($username, $password) {
-/*
-SELECT
-    usucod,    rolcod,    usucontr,    usualias,    dpcod,    usufeccrea,    usuulting,    usuacfech,    estcod	FROM    usuario
-*/		
+
 		$this->db->select('usu_contr');
 		$this->db->from('usuario');
 		$this->db->where('usu_alias', $username);

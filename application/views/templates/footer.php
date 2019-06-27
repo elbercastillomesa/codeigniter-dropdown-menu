@@ -6,7 +6,7 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('#<?php echo "book-table" ?>').DataTable({
-				"pageLength" : 5		        
+				"pageLength" : 10		        
 		    });
 		});
 	</script>

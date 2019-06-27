@@ -50,6 +50,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
+$route['file'] = 'file/[:1]';
+
 $route['asesores'] = 'asesores/index';
 
 $route['register'] = 'user/register';
