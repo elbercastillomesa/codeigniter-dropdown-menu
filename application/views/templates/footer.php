@@ -6,10 +6,12 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('#<?php echo "book-table" ?>').DataTable({
-				"pageLength" : 10		        
+				"pageLength" : 10,
+				"language": {
+					"url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+				}		        
 		    });
 		});
 	</script>
-
 </body>
 </html>
