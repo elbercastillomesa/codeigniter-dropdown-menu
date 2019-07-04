@@ -38,23 +38,11 @@ class File extends CI_Controller {
         $filename = 'asesoresOndas_'.date('Y_m_d_H_i_s');
 
         // Write data to Spreadsheet File
-
-        var_dump($data);
         $sheet->setCellValue('A1', 'Nombres');
         $sheet->setCellValue('B1', 'Apellidos');
         $sheet->setCellValue('C1', 'Telefono');
         $sheet->setCellValue('D1', 'Celular');
         $sheet->setCellValue('E1', 'email');
-
-
-
- $asesor['primer_nombre'].' '.$asesor['segundo_nombre'] ; ?></td>
-                <td><?php echo $asesor['primer_apellido'].' '.$asesor['segundo_apellido'] ; ?></td>
-                <td><?php echo $asesor['telefono'] ; ?></td>
-                <td><?php echo $asesor['celular'] ; ?></td>
-                <td><?php echo $asesor['asesor_email'] </td>
-
-
 
         $sheet->setCellValue('A1', 'Hello World !');        
  
@@ -65,5 +53,4 @@ class File extends CI_Controller {
         //$writer->save('php://output'); // download file 
  
     }
-
 }
