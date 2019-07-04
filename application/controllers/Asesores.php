@@ -33,9 +33,11 @@ class Asesores extends CI_Controller {
 
 		// create the data object
 		$data = new stdClass();
-		
+
+		$this->form_validation->set_rules('accept_terms_checkbox', '', 'callback_accept_terms');
+
 		if ($this->form_validation->run() === false) {
-			
+
 			// validation not ok, send validation errors to the view
 			$data = showLinks($_SESSION, 'Asesores');
 			$data['lista'] = get_asesores();
@@ -46,14 +48,17 @@ class Asesores extends CI_Controller {
 			$this->load->view('templates/footer');
 
 		} else {
-			
+
+var_dump("FALLA2");			
 			// set variables from the form
-			$array 			= $this->input->post('array');
+			$array['dato']	= $this->input->post('dato[]');
+			var_dump($array['dato']);
+
 			$query_array 	= get_asesores($array);
 
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar', $data);
-			
+			/*
 			if ($query_array['result']) {
 				
 				$this->load->view('partners/asesores', $query_array['lista']);			
@@ -65,8 +70,22 @@ class Asesores extends CI_Controller {
 
 				$this->load->view('partners/asesores', $data['error']);	
 			}
+			*/
 
 			$this->load->view('templates/footer');	
+		}
+	}
+
+	function accept_terms(){
+
+		//if (isset($_POST['accept_terms_checkbox']))
+		if ($this->input->post('dato[]')){
+			return TRUE;
+		
+		} else {
+			$error = 'Please read and accept our terms and conditions.';
+			$this->form_validation->set_message('accept_terms', $error);
+			return FALSE;
 		}
 	}
 }

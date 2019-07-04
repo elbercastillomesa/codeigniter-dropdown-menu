@@ -3,16 +3,9 @@
     <div class="row">
       <div class="col-lg-12 text-center">
         <h1 class="mt-5">Asesores</h1>
-        <p class="lead">Pra!</p>
+        <p class="lead">Datos basicos de los asesores Ondas Valle!</p>
 
         <div class="row">
-          <?php if (validation_errors()) : ?>
-            <div class="col-md-12">
-              <div class="alert alert-danger" role="alert">
-                <?= validation_errors() ?>
-              </div>
-            </div>
-          <?php endif; ?>
           <?php if (isset($error)) : ?>
             <div class="col-md-12">
               <div class="alert alert-danger" role="alert">
@@ -20,60 +13,56 @@
               </div>
             </div>
           <?php endif; ?>
+      <?php echo form_error('accept_terms_checkbox') ?>
           <div class="col-md-12">
-            <div class="page-header">
-              <h1>Register</h1>
-            </div>
-            <?= form_open() ?>
+            <form action="<?= site_url('asesores/getData') ?>" method="POST">
               <div class="form-group">
-                                
+
                 <div class="custom-control custom-checkbox custom-control-inline">
-                  <input type="checkbox" class="custom-control-input" id="nombre">
+                  <input type="checkbox" class="custom-control-input" id="nombre" name="dato[nombre]">
                   <label class="custom-control-label" for="nombre">Nombres</label>
                 </div>
-
                 <div class="custom-control custom-checkbox custom-control-inline">
-                  <input type="checkbox" class="custom-control-input" id="apellido">
+                  <input type="checkbox" class="custom-control-input" id="apellido" name="dato[apellido]">
                   <label class="custom-control-label" for="apellido">Apellidos</label>
                 </div>
-
                 <div class="custom-control custom-checkbox custom-control-inline">
-                  <input type="checkbox" class="custom-control-input" id="sexo">
+                  <input type="checkbox" class="custom-control-input" id="sexo" name="dato[sexo]">
                   <label class="custom-control-label" for="sexo">Sexo</label>
                 </div>
-
                 <div class="custom-control custom-checkbox custom-control-inline">
-                  <input type="checkbox" class="custom-control-input" id="etnia">
+                  <input type="checkbox" class="custom-control-input" id="etnia" name="dato[etnia]">
                   <label class="custom-control-label" for="etnia">Etnia</label>
                 </div>
-
-                <div class="custom-control custom-checkbox custom-control-inline">
-                  <input type="checkbox" class="custom-control-input" id="telefono">
-                  <label class="custom-control-label" for="telefono">Telefono</label>
-                </div>
-
-                <div class="custom-control custom-checkbox custom-control-inline">
-                  <input type="checkbox" class="custom-control-input" id="celular">
-                  <label class="custom-control-label" for="celular">Celular</label>
-                </div>
-
-                <div class="custom-control custom-checkbox custom-control-inline">
-                  <input type="checkbox" class="custom-control-input" id="documento">
-                  <label class="custom-control-label" for="documento">Documento</label>
-                </div>
-
-                <div class="custom-control custom-checkbox custom-control-inline">
-                  <input type="checkbox" class="custom-control-input" id="email">
-                  <label class="custom-control-label" for="email">e-mail</label>
-                </div>
-
               </div>
               <div class="form-group">
-                <input type="submit" class="btn btn-default" value="Register">
+                <div class="custom-control custom-checkbox custom-control-inline">
+                  <input type="checkbox" class="custom-control-input" id="telefono" name="dato[telefono]">
+                  <label class="custom-control-label" for="telefono">Telefono</label>
+                </div>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                  <input type="checkbox" class="custom-control-input" id="celular" name="dato[celular]">
+                  <label class="custom-control-label" for="celular">Celular</label>
+                </div>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                  <input type="checkbox" class="custom-control-input" id="documento" name="dato[documento]">
+                  <label class="custom-control-label" for="documento">Documento</label>
+                </div>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                  <input type="checkbox" class="custom-control-input" id="email" name="dato[email]">
+                  <label class="custom-control-label" for="email">e-mail</label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <input type="submit" class="button is-link" value="Consultar">
               </div>
             </form>
           </div>
-        </div><!-- .row -->
+        </div>
+
+
+
 
         <table id="book-table" class="table table-bordered table-striped table-hover">
           <thead>
