@@ -90,6 +90,21 @@ class Asesores_model extends CI_Model {
 		//echo PHP_EOL.$this->db->last_query().PHP_EOL;
 		return $result;
 	}
+
+	public function get_asesores_array($array_query = '') {
+
+		if (empty($array_query)) {
+			
+			$result = $this->get_asesores();			
+		
+		} else {
+		
+			$this->db->select($array_query);
+			$this->db->from('o_asesor');
+			$result = $this->db->get()->result_array();
+		}
+		return $result;
+	}
 	
 	/**
 	 * hash_password function.

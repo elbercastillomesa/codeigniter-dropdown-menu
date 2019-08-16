@@ -33,13 +33,13 @@ class Asesores extends CI_Controller {
 
 		// create the data object
 		$data = new stdClass();
+		$data = showLinks($_SESSION, 'Asesores');
 
 		$this->form_validation->set_rules('accept_terms_checkbox', '', 'callback_accept_terms');
 
 		if ($this->form_validation->run() === false) {
 
-			// validation not ok, send validation errors to the view
-			$data = showLinks($_SESSION, 'Asesores');
+			// validation not ok, send validation errors to the view			
 			$data['lista'] = get_asesores();
 
 			$this->load->view('templates/header', $data);
@@ -48,30 +48,14 @@ class Asesores extends CI_Controller {
 			$this->load->view('templates/footer');
 
 		} else {
-
-var_dump("FALLA2");			
+		
 			// set variables from the form
 			$array['dato']	= $this->input->post('dato[]');
-			var_dump($array['dato']);
-
-			$query_array 	= get_asesores($array);
+			$data['lista'] 	= get_asesores_array($array['dato']);
 
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar', $data);
-			/*
-			if ($query_array['result']) {
-				
-				$this->load->view('partners/asesores', $query_array['lista']);			
-				
-			} else {
-				
-				// Falla en la consulta
-				$data['error'] = 'Se present&oacute; un problema con los datos solicitados, intente nuevamente.';
-
-				$this->load->view('partners/asesores', $data['error']);	
-			}
-			*/
-
+			$this->load->view('partners/asesores');
 			$this->load->view('templates/footer');	
 		}
 	}

@@ -25,6 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 //$config['base_url'] = 'http://'.$_SERVER["HTTP_HOST"].'/codeigniter-dropdown-menu';
 $config['base_url'] = 'http://'.$_SERVER["HTTP_HOST"].'/php_learn/gestorOndas';
+//$config['base_url'] = 'https://gestorondas.000webhostapp.com/';
 
 /*
 |--------------------------------------------------------------------------
