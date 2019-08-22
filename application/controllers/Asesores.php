@@ -56,6 +56,10 @@ class Asesores extends CI_Controller {
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar', $data);
 			$this->load->view('partners/asesores');
+			if (!empty($data['lista'])) {
+				$this->load->view('partners/dataTable');
+			}			
+			$this->load->view('partners/footer');
 			$this->load->view('templates/footer');	
 		}
 	}
@@ -67,7 +71,7 @@ class Asesores extends CI_Controller {
 			return TRUE;
 		
 		} else {
-			$error = 'Please read and accept our terms and conditions.';
+			$error = 'Por favor seleccione al menos una opcí&oacute;n.';
 			$this->form_validation->set_message('accept_terms', $error);
 			return FALSE;
 		}

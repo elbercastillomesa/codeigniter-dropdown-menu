@@ -69,31 +69,3 @@
             </form>
           </div>
         </div>
-
-<?php var_dump($lista); ?>
-
-        <table id="book-table" class="table table-bordered table-striped table-hover">
-          <thead>
-            <tr>
-              <td>Nombres</td>
-              <td>Apellidos</td>
-              <td>Telefono</td>
-              <td>Celular</td>
-              <td>e-mail</td>
-            </tr>
-          </thead>
-          <tbody>
-            <?php foreach ($lista as $asesor): ?>
-              <tr>
-                <td><?php echo $asesor['primer_nombre'].' '.$asesor['segundo_nombre'] ; ?></td>
-                <td><?php echo $asesor['primer_apellido'].' '.$asesor['segundo_apellido'] ; ?></td>
-                <td><?php echo $asesor['telefono'] ; ?></td>
-                <td><?php echo $asesor['celular'] ; ?></td>
-                <td><?php echo $asesor['asesor_email'] ; ?></td>
-              </tr>           
-            <?php endforeach; ?>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
