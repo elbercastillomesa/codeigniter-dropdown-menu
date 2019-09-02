@@ -101,8 +101,13 @@ class Asesores_model extends CI_Model {
 		
 			$this->db->select($array_query);
 			$this->db->from('o_asesor');
+			$this->db->join('o_sexo', 'o_sexo.id_sexo = o_asesor.fk_id_sexo', 'left');
+			$this->db->join('o_etnia', 'o_etnia.id_etnia = o_asesor.fk_id_etnia', 'left');
+			$this->db->join('o_nivelacademico', 'o_nivelacademico.id_nivelaca = o_asesor.fk_id_nivela', 'left');
+			$this->db->join('o_municipio', 'o_municipio.id_municipio = o_asesor.fk_id_mpio', 'left');
 			$result = $this->db->get()->result_array();
 		}
+		echo PHP_EOL.$this->db->last_query().PHP_EOL;
 		return $result;
 	}
 	

@@ -66,10 +66,8 @@ class Asesores extends CI_Controller {
 
 	function accept_terms(){
 
-		//if (isset($_POST['accept_terms_checkbox']))
 		if ($this->input->post('dato[]')){
-			return TRUE;
-		
+			return TRUE;	
 		} else {
 			$error = 'Por favor seleccione al menos una opcí&oacute;n.';
 			$this->form_validation->set_message('accept_terms', $error);

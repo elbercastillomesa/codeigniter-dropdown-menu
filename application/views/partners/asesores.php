@@ -27,11 +27,11 @@
                   <label class="custom-control-label" for="apellido">Apellidos</label>
                 </div>
                 <div class="custom-control custom-checkbox custom-control-inline">
-                  <input type="checkbox" class="custom-control-input" id="sexo" name="dato[fk_id_sexo]">
+                  <input type="checkbox" class="custom-control-input" id="sexo" name="dato[sexo]">
                   <label class="custom-control-label" for="sexo">Sexo</label>
                 </div>
                 <div class="custom-control custom-checkbox custom-control-inline">
-                  <input type="checkbox" class="custom-control-input" id="etnia" name="dato[fk_id_etnia]">
+                  <input type="checkbox" class="custom-control-input" id="etnia" name="dato[etnia]">
                   <label class="custom-control-label" for="etnia">Etnia</label>
                 </div>
                 <div class="custom-control custom-checkbox custom-control-inline">
@@ -54,11 +54,11 @@
                   <label class="custom-control-label" for="email">e-mail</label>
                 </div>
                 <div class="custom-control custom-checkbox custom-control-inline">
-                  <input type="checkbox" class="custom-control-input" id="nivel" name="dato[fk_id_nivela]">
+                  <input type="checkbox" class="custom-control-input" id="nivel" name="dato[nivel_academico]">
                   <label class="custom-control-label" for="nivel">Nivel Academico</label>
                 </div>
                 <div class="custom-control custom-checkbox custom-control-inline">
-                  <input type="checkbox" class="custom-control-input" id="mpio" name="dato[fk_id_mpio]">
+                  <input type="checkbox" class="custom-control-input" id="mpio" name="dato[municipio]">
                   <label class="custom-control-label" for="mpio">Municipio</label>
                 </div>
               </div>
