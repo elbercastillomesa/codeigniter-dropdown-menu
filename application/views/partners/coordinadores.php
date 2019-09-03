@@ -50,7 +50,7 @@
                   <label class="custom-control-label" for="documento">Documento</label>
                 </div>
                 <div class="custom-control custom-checkbox custom-control-inline">
-                  <input type="checkbox" class="custom-control-input" id="email" name="dato[asesores_email]">
+                  <input type="checkbox" class="custom-control-input" id="email" name="dato[coordinadores_email]">
                   <label class="custom-control-label" for="email">e-mail</label>
                 </div>
                 <div class="custom-control custom-checkbox custom-control-inline">
@@ -63,7 +63,7 @@
                 </div>
               </div>
 
-              <input type="hidden" id="parternType" name="parternType" value="asesores">
+              <input type="hidden" id="parternType" name="parternType" value="coordinadores">
 
               <div class="form-group">
                 <input type="submit" class="button is-link" value="Consultar">

@@ -2,52 +2,28 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-function get_equipo($entidad, $array = ''){
-
-	$data = array();
-
-	switch ($entidad) {
-		case 'asesores':
-			$data = get_asesores_array($array);
-			break;
-		
-		default:
-			# code...
-			break;
-	}
-
-	return $data;
-}
-
-
-
-
-
-/************ Asesores ************/
-
-function get_asesores(){
+function get_equipo($entidad){
 
 	$CI =& get_instance();   
 	$CI->load->model('Equipo_model', 'equipo_model', TRUE);	
-	$data = $CI->equipo_model->get_asesores();
+	$data = $CI->equipo_model->get_equipo($entidad);
 	return $data;	
 }
 
 
-function get_asesores_array($array = ''){
+function get_equipo_array($entidad = '', $array = ''){
 
 	$CI =& get_instance();   
 	$CI->load->model('Equipo_model', 'equipo_model', TRUE);
-	$query_array = array('id_asesor','primer_nombre','segundo_nombre','primer_apellido','segundo_apellido');
+	$query_array = array('id_'.$entidad,'primer_nombre','segundo_nombre','primer_apellido','segundo_apellido');
 
 	if(empty($array)){ 
 
-		$data = get_asesores();
-		$query_array = array('id_asesor','primer_nombre','segundo_nombre','primer_apellido','segundo_apellido');
+		$data = get_equipo($entidad);
 
 	} else {
 
-		$query = array('sexo', 'etnia', 'telefono', 'celular', 'asesor_email', 'documento', 'fecha', 'fk_id_tipoid', 'nivel_academico', 'municipio', 'fk_id_ex');
+		$query = array('sexo', 'etnia', 'telefono', 'celular', $entidad.'_email', 'documento', 'fecha', 'fk_id_tipoid', 'nivel_academico', 'municipio', 'fk_id_ex');
 
 		$keys = array('ID', 'Primer_Nombre', 'Segundo_Nombre', 'Primer_Apellido', 'Segundo_Apellido', 'Sexo', 'Etnia', 'Telefono', 'Celular', 'e-mail', 'Documento', 'Nivel_Academico', 'Municipio', );
 
@@ -55,16 +31,15 @@ function get_asesores_array($array = ''){
 			$query_array[] = (array_key_exists($value,$array) ? $value : '' );
 		}
 
-		$data = $CI->equipo_model->get_asesores_array($query_array);
-		$array_data = replace_key($data, $keys);
+		$data = $CI->equipo_model->get_equipo_array($entidad, $query_array);
+		$array_data = replace_key($data, $keys, $entidad);
 
 		return $array_data;
 	}
 }
 
 
-
-function replace_key($array, $newkey) {
+function replace_key($array, $newkey, $entidad) {
 
     $newarr = array();
 
@@ -73,7 +48,7 @@ function replace_key($array, $newkey) {
 	    $oldkey = array_keys($data);
 	    $value	= array_values($data);
 
-	    $newkey = changeIDkey($oldkey);
+	    $newkey = changeIDkey($oldkey, $entidad);
 	    $newarr[] = array_combine($newkey, $value);
 	}
 
@@ -81,13 +56,13 @@ function replace_key($array, $newkey) {
 }
 
 
-function changeIDkey($array){
+function changeIDkey($array, $entidad='coordinadores'){
 
 	$new_keys = array();
 
 	foreach ($array as $key) {
 
-		if ($key === "id_asesor") 		 $key = 'ID';
+		if ($key === "id_".$entidad) 	 $key = 'ID';
 		if ($key === "primer_nombre") 	 $key = 'Primer_Nombre';
 		if ($key === "segundo_nombre") 	 $key = 'Segundo_Nombre';
 		if ($key === "primer_apellido")  $key = 'Primer_Apellido';
@@ -96,7 +71,7 @@ function changeIDkey($array){
 		if ($key === "etnia") 	 		 $key = 'Etnia';
 		if ($key === "telefono") 		 $key = 'Telefono';
 		if ($key === "celular") 		 $key = 'Celular';
-		if ($key === "asesor_email") 	 $key = 'e-mail';
+		if ($key === $entidad."_email")	 $key = 'e-mail';
 		if ($key === "documento") 		 $key = 'Documento';
 		if ($key === "nivel_academico")	 $key = 'Nivel_Academico';
 		if ($key === "municipio") 		 $key = 'Municipio';		

@@ -22,7 +22,6 @@ class Equipo extends CI_Controller {
 	public function index() {
 
 		$data = showLinks($_SESSION, 'Asesores');
-		$data['lista'] = get_asesores();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/navbar', $data);		
@@ -33,12 +32,24 @@ class Equipo extends CI_Controller {
 	public function asesores() {
 
 		$data = showLinks($_SESSION, 'Asesores');
-		$data['lista'] = get_asesores();
 		$data['parternType'] = basename(current_url());
+		$data['lista'] = get_equipo_array($data['parternType']);
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/navbar', $data);		
 		$this->load->view('partners/asesores');
+		$this->load->view('templates/footer');	
+	}
+
+	public function coordinadores() {
+
+		$data = showLinks($_SESSION, 'Coordinadores');
+		$data['parternType'] = basename(current_url());
+		$data['lista'] = get_equipo_array($data['parternType']);
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/navbar', $data);		
+		$this->load->view('partners/coordinadores');
 		$this->load->view('templates/footer');	
 	}
 
@@ -63,7 +74,7 @@ class Equipo extends CI_Controller {
 			// set variables from the form
 			$array['dato']	= $this->input->post('dato[]');
 			$data['parternType'] = $this->input->post('parternType');
-			$data['lista'] 	= get_equipo($data['parternType'], $array['dato']);
+			$data['lista'] 	= get_equipo_array($data['parternType'], $array['dato']);
 			
 
 			$this->load->view('templates/header', $data);
