@@ -2,11 +2,34 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
+function get_equipo($entidad, $array = ''){
+
+	$data = array();
+
+	switch ($entidad) {
+		case 'asesores':
+			$data = get_asesores_array($array);
+			break;
+		
+		default:
+			# code...
+			break;
+	}
+
+	return $data;
+}
+
+
+
+
+
+/************ Asesores ************/
+
 function get_asesores(){
 
 	$CI =& get_instance();   
-	$CI->load->model('Asesores_model', 'asesores_model', TRUE);	
-	$data = $CI->asesores_model->get_asesores();
+	$CI->load->model('Equipo_model', 'equipo_model', TRUE);	
+	$data = $CI->equipo_model->get_asesores();
 	return $data;	
 }
 
@@ -14,7 +37,7 @@ function get_asesores(){
 function get_asesores_array($array = ''){
 
 	$CI =& get_instance();   
-	$CI->load->model('Asesores_model', 'asesores_model', TRUE);
+	$CI->load->model('Equipo_model', 'equipo_model', TRUE);
 	$query_array = array('id_asesor','primer_nombre','segundo_nombre','primer_apellido','segundo_apellido');
 
 	if(empty($array)){ 
@@ -32,11 +55,7 @@ function get_asesores_array($array = ''){
 			$query_array[] = (array_key_exists($value,$array) ? $value : '' );
 		}
 
-echo "<br><br>ECHO ARREGLO ENTRADA<br>";
-var_dump($array);	
-
-		$data = $CI->asesores_model->get_asesores_array($query_array);
-
+		$data = $CI->equipo_model->get_asesores_array($query_array);
 		$array_data = replace_key($data, $keys);
 
 		return $array_data;

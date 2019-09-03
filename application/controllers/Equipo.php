@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Asesores extends CI_Controller {
+class Equipo extends CI_Controller {
 
 	/**
 	 * __construct function.
@@ -12,9 +12,10 @@ class Asesores extends CI_Controller {
 	public function __construct() {
 		
 		parent::__construct();
-		$this->load->model('asesores_model');
+		$this->load->model('equipo_model');
 		$this->load->helper('navbar_helper');			
-		$this->load->helper('asesores_helper');			
+		$this->load->helper('equipo_helper');
+		$this->load->helper('url');		
 	}
 	
 	
@@ -22,6 +23,18 @@ class Asesores extends CI_Controller {
 
 		$data = showLinks($_SESSION, 'Asesores');
 		$data['lista'] = get_asesores();
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/navbar', $data);		
+		$this->load->view('partners/index');
+		$this->load->view('templates/footer');	
+	}
+
+	public function asesores() {
+
+		$data = showLinks($_SESSION, 'Asesores');
+		$data['lista'] = get_asesores();
+		$data['parternType'] = basename(current_url());
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/navbar', $data);		
@@ -33,29 +46,29 @@ class Asesores extends CI_Controller {
 
 		// create the data object
 		$data = new stdClass();
-		$data = showLinks($_SESSION, 'Asesores');
+		$data = showLinks($_SESSION, 'Equipo');
 
 		$this->form_validation->set_rules('accept_terms_checkbox', '', 'callback_accept_terms');
 
 		if ($this->form_validation->run() === false) {
 
 			// validation not ok, send validation errors to the view			
-			$data['lista'] = get_asesores();
-
 			$this->load->view('templates/header', $data);
-			$this->load->view('templates/navbar', $data);		
-			$this->load->view('partners/asesores');
+			$this->load->view('templates/navbar', $data);
+			$this->load->view('partners/index');
 			$this->load->view('templates/footer');
 
 		} else {
-		
+			
 			// set variables from the form
 			$array['dato']	= $this->input->post('dato[]');
-			$data['lista'] 	= get_asesores_array($array['dato']);
+			$data['parternType'] = $this->input->post('parternType');
+			$data['lista'] 	= get_equipo($data['parternType'], $array['dato']);
+			
 
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar', $data);
-			$this->load->view('partners/asesores');
+			$this->load->view('partners/'.$data['parternType'], $data);
 			if (!empty($data['lista'])) {
 				$this->load->view('partners/dataTable');
 			}			
