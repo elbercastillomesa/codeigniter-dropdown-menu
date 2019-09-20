@@ -1,0 +1,10 @@
+.navbar {
+	
+	background-color: #139397;	
+}
+
+.container:before {
+	background-image: url('../images/ondasLogin.png');
+	opacity: 0.3;
+	position: absolute;
+}

@@ -12,4 +12,5 @@
   <!-- Bootstrap core CSS -->
   <link href="<?= base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.css"/>
+  <link href="<?= base_url('assets/css/ondas.css') ?>" rel="stylesheet">
 </head>

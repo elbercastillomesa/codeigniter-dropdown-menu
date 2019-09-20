@@ -13,7 +13,7 @@
               </div>
             </div>
           <?php endif; ?>
-      <?php echo form_error('accept_terms_checkbox') ?>
+          <?php echo form_error('accept_terms_checkbox'); ?>
           <div class="col-md-12">
             <form action="<?= site_url('equipo/getData') ?>" method="POST">
               
