@@ -41,9 +41,33 @@ class Equipo extends CI_Controller {
 		$this->load->view('templates/footer');	
 	}
 
+	public function administrativos() {
+
+		$data = showLinks($_SESSION, 'Administrativos');
+		$data['parternType'] = basename(current_url());
+		$data['lista'] = get_equipo_array($data['parternType']);
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/navbar', $data);		
+		$this->load->view('partners/administrativos');
+		$this->load->view('templates/footer');	
+	}
+
 	public function coordinadores() {
 
 		$data = showLinks($_SESSION, 'Coordinadores');
+		$data['parternType'] = basename(current_url());
+		$data['lista'] = get_equipo_array($data['parternType']);
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/navbar', $data);		
+		$this->load->view('partners/coordinadores');
+		$this->load->view('templates/footer');	
+	}
+
+	public function docentes() {
+
+		$data = showLinks($_SESSION, 'Docentes');
 		$data['parternType'] = basename(current_url());
 		$data['lista'] = get_equipo_array($data['parternType']);
 
@@ -75,7 +99,6 @@ class Equipo extends CI_Controller {
 			$array['dato']	= $this->input->post('dato[]');
 			$data['parternType'] = $this->input->post('parternType');
 			$data['lista'] 	= get_equipo_array($data['parternType'], $array['dato']);
-			
 
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar', $data);

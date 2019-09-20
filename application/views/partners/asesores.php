@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-lg-12 text-center">
         <h1 class="mt-5">Equipo Ondas</h1>        
-        <p class="lead">Datos basicos de los <?php echo $parternType; ?> Ondas Valle!</p>
+        <p class="lead">Datos basicos de los <?php echo ucfirst($parternType); ?> Ondas Valle!</p>
 
         <div class="row">
           <?php if (isset($error)) : ?>

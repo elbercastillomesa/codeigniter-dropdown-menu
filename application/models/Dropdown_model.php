@@ -16,7 +16,7 @@ class Dropdown_model extends CI_Model {
 		//$this->db->where('menu.m_session >= '.$id);
 		$this->db->where_in('menu.m_session', $id);
 		$this->db->group_by('menu_id');
-		$this->db->order_by('m_name', 'ASC');
+		$this->db->order_by('menu_id', 'ASC');
 		$query = $this->db->get();
 		//echo PHP_EOL.$this->db->last_query().PHP_EOL;
 		return $query->result();
