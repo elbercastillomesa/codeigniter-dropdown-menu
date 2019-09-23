@@ -3,8 +3,23 @@
 	background-color: #139397;	
 }
 
-.container:before {
-	background-image: url('../images/ondasLogin.png');
-	opacity: 0.3;
-	position: absolute;
+
+
+div {
+  display: block;
+  position: relative;
+  background: no-repeat;
+}
+
+div::after {
+  content: "";
+  background: url('../images/ondasLogin.png');
+
+  opacity: 0.1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
 }
