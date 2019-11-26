@@ -1,10 +1,16 @@
 ###################
-CodeIgniter Dropdown Menu Example
+Gestor Ondas - CI Dropdown Menu
 ###################
 
+Repository for Universidad del Valle to manage information about the project 
+Ondas (COLCIENCIAS), this will allow to handle more efficient all data about 
+the project and generate some dinamyc reports. 
+
+*********
 This example is bases in Phearun Web Dev but updated to Current Bootstrap, 
 CI and jQuery versions, currently I'm working to integrate this into a 
 simple login-signup to enhance posibilities.
+*********
 
 *********
 Resources
